@@ -3,7 +3,7 @@ import 'package:jnee/controllers/home_controller.dart';
 import 'package:jnee/controllers/organization_controller.dart';
 import 'package:jnee/controllers/search_controller.dart';
 import 'package:jnee/controllers/splash_controller.dart';
-import 'package:jnee/controllers/zoom_drawer_controller.dart';
+
 import 'package:jnee/screens/detail/detail_screen.dart';
 import 'package:jnee/screens/home/home_screen.dart';
 import 'package:jnee/screens/home/search_form.dart';
@@ -39,14 +39,14 @@ class AppRoutes {
             //Get.put(MyZoomDrawerController());
           }),
         ),
-        GetPage(
-          name: loginPage,
-          page: () => const LoginScreen(),
-          binding: BindingsBuilder(() {
-            Get.put(AuthController());
-            Get.put(MyZoomDrawerController());
-          }),
-        ),
+        // GetPage(
+        //   name: loginPage,
+        //   page: () => const LoginScreen(),
+        //   binding: BindingsBuilder(() {
+        //     Get.put(AuthController());
+        //     Get.put(MyZoomDrawerController());
+        //   }),
+        // ),
         GetPage(
           name: cardDetailPage,
           page: () => const DetailScreen(),

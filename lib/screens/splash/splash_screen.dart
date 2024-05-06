@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jnee/controllers/splash_controller.dart';
-import 'package:rive/rive.dart';
 
 class SplashScreen extends GetView<SplashController> {
   const SplashScreen({super.key});
