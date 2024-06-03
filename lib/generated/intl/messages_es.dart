@@ -36,32 +36,52 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "baseUrl":
-            MessageLookupByLibrary.simpleMessage("https://full.facturalo.pro"),
         "pageHomeWelcome": m0,
         "pageHomeWelcomeGender": m1,
         "pageHomeWelcomeRole": m2,
         "pageNotificationsCount": m3,
+        "routeHome": MessageLookupByLibrary.simpleMessage("/"),
+        "routeOrganizationFilter":
+            MessageLookupByLibrary.simpleMessage("/organization-filter"),
+        "routePublicHearing":
+            MessageLookupByLibrary.simpleMessage("/public-hearing"),
+        "txPublicHearing":
+            MessageLookupByLibrary.simpleMessage("Audiencias Públicas"),
         "txtAcademicFormation":
             MessageLookupByLibrary.simpleMessage("Formación académica"),
         "txtAditionalInformation":
             MessageLookupByLibrary.simpleMessage("Información adicional"),
         "txtBasicInformation":
             MessageLookupByLibrary.simpleMessage("Información básica"),
+        "txtCancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
+        "txtDefaultDescription":
+            MessageLookupByLibrary.simpleMessage("Descripcion por defecto"),
+        "txtDefaultTitle":
+            MessageLookupByLibrary.simpleMessage("Titulo por defecto"),
+        "txtDelete": MessageLookupByLibrary.simpleMessage("Eliminar"),
+        "txtDetail": MessageLookupByLibrary.simpleMessage("Detalle"),
+        "txtEdit": MessageLookupByLibrary.simpleMessage("Editar"),
         "txtFilterBy": MessageLookupByLibrary.simpleMessage("Filtrar por :"),
-        "txtHome": MessageLookupByLibrary.simpleMessage("Infobae"),
+        "txtHome": MessageLookupByLibrary.simpleMessage("JNE"),
         "txtListOfJudgments":
             MessageLookupByLibrary.simpleMessage("Relacion de sentencias"),
+        "txtNew": MessageLookupByLibrary.simpleMessage("Nuevo"),
+        "txtOk": MessageLookupByLibrary.simpleMessage("OK"),
         "txtPartialPosition":
             MessageLookupByLibrary.simpleMessage("Trayectoria partidaria"),
+        "txtSave": MessageLookupByLibrary.simpleMessage("Guardar"),
         "txtSignIn": MessageLookupByLibrary.simpleMessage("Ingresar"),
         "txtSwornDeclaration":
             MessageLookupByLibrary.simpleMessage("Declaración jurada"),
         "txtWorkExperience":
             MessageLookupByLibrary.simpleMessage("Experiencia laboral"),
+        "urlBase": MessageLookupByLibrary.simpleMessage(
+            "https://apiplataformaelectoral8.jne.gob.pe/api/v1"),
         "urlPhotoResume": MessageLookupByLibrary.simpleMessage(
             "https://declara.jne.gob.pe/Assets/Fotos-HojaVida"),
         "urlPoliticalGroupSymbol": MessageLookupByLibrary.simpleMessage(
-            "https://sroppublico.jne.gob.pe/Consulta/Simbolo/GetSimbolo")
+            "https://sroppublico.jne.gob.pe/Consulta/Simbolo/GetSimbolo"),
+        "urlPublicHearing": MessageLookupByLibrary.simpleMessage(
+            "https://portal.jne.gob.pe/portal/Pagina/Lista_AudienciasPublicas/")
       };
 }

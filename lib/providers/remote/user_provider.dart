@@ -1,7 +1,5 @@
-import 'package:flutter/services.dart';
 import 'package:jnee/helpers/http.dart';
 import 'package:jnee/helpers/http_method.dart';
-import 'package:jnee/helpers/platform_exceptions.dart';
 
 class UserProvider {
   final Http _http = Http();

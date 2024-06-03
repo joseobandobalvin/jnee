@@ -19,8 +19,9 @@ class HomeController extends GetxController {
     List<Cv> usuarios = [];
 
     try {
-      final res =
-          await _userProvider.getAllCandidates().timeout(Duration(seconds: 2));
+      final res = await _userProvider
+          .getAllCandidates()
+          .timeout(const Duration(seconds: 2));
 
       if (res != null && res["count"] > 0.0) {
         final lista = List.from(res['data']);
@@ -35,7 +36,7 @@ class HomeController extends GetxController {
       throw OPlatformException(e.code).message;
     } catch (e) {
       print("error sin manejadores en flutter getCandidates ----");
-      print(e.hashCode);
+      print(e);
     }
 
     return usuarios;

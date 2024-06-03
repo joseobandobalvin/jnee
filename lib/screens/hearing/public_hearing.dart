@@ -1,31 +1,25 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:jnee/configs/themes/app_colors.dart';
-import 'package:jnee/controllers/home_controller.dart';
+import 'package:jnee/controllers/hearing_controller.dart';
 import 'package:jnee/generated/l10n.dart';
-import 'package:jnee/models/cv.dart';
-import 'package:jnee/screens/home/search_form.dart';
-import 'package:jnee/widgets/card_stack.dart';
+import 'package:jnee/screens/hearing/widgets/card_hearing.dart';
 import 'package:jnee/widgets/global_widgets/custom_drawer.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class PublicHearingScreen extends StatefulWidget {
+  const PublicHearingScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<PublicHearingScreen> createState() => _PublicHearingScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  late Future<List<Cv>> cv;
-  final HomeController _homeController = HomeController();
-
-  //var users = Get.arguments;
+class _PublicHearingScreenState extends State<PublicHearingScreen> {
+  late Future ph;
+  final HearingController _hearingController = HearingController();
 
   @override
   void initState() {
     super.initState();
-    cv = _homeController.getCandidates();
+    ph = _hearingController.getList(context);
   }
 
   @override
@@ -39,20 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
         slivers: <Widget>[
           SliverAppBar(
             backgroundColor: kDarkBlue,
-            actions: <Widget>[
-              IconButton(
-                onPressed: () async {
-                  //Get.toNamed("/search");
-                  await showSearch(
-                    context: context,
-                    delegate: CustomSearchDelegate(),
-                  );
-                },
-                icon: const Icon(Icons.search, color: Colors.white),
-              )
-            ],
+
             title: Text(
-              S.current.txtHome,
+              S.current.txPublicHearing,
               style: const TextStyle(color: Colors.white),
             ),
             //pinned: false,
@@ -65,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // ),
           ),
           FutureBuilder(
-            future: cv,
+            future: ph,
             builder: (context, snapshot) {
               var childCount = 0;
 
@@ -77,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 return SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                      return CardStack(snapshot.data![index]);
+                      return CardHearing(snapshot.data![index]);
                     },
                     childCount: childCount,
                   ),

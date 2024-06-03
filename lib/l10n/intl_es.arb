@@ -1,6 +1,12 @@
 {
-    "baseUrl":"https://full.facturalo.pro",
-    "txtHome":"Infobae",
+    "routeHome":"/",
+    "routeOrganizationFilter":"/organization-filter",
+    "routePublicHearing":"/public-hearing",
+
+    "urlBase":"https://apiplataformaelectoral8.jne.gob.pe/api/v1",
+    "urlPublicHearing":"https://portal.jne.gob.pe/portal/Pagina/Lista_AudienciasPublicas/",
+
+    "txtHome":"JNE",
     "txtBasicInformation":"Información básica",
     "txtWorkExperience":"Experiencia laboral",
     "txtAcademicFormation":"Formación académica",
@@ -8,8 +14,20 @@
     "txtSwornDeclaration":"Declaración jurada",
     "txtListOfJudgments":"Relacion de sentencias",
     "txtAditionalInformation":"Información adicional",
+
+    "txtDefaultTitle":"Titulo por defecto",
+    "txtDefaultDescription":"Descripcion por defecto",
+    "txtCancel": "Cancelar",
+    "txtDelete": "Eliminar",
+    "txtDetail": "Detalle",
+    "txtEdit": "Editar",
+    "txtNew": "Nuevo",
+    "txtOk" : "OK",
+    "txtSave": "Guardar",
     "txtSignIn": "Ingresar",
     "txtFilterBy": "Filtrar por :",
+    
+    "txPublicHearing": "Audiencias Públicas",
     "urlPhotoResume" : "https://declara.jne.gob.pe/Assets/Fotos-HojaVida",
     "urlPoliticalGroupSymbol":"https://sroppublico.jne.gob.pe/Consulta/Simbolo/GetSimbolo",
     "pageHomeWelcome": "Welcome {name}",

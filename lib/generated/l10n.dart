@@ -50,20 +50,60 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `https://full.facturalo.pro`
-  String get baseUrl {
+  /// `/`
+  String get routeHome {
     return Intl.message(
-      'https://full.facturalo.pro',
-      name: 'baseUrl',
+      '/',
+      name: 'routeHome',
       desc: '',
       args: [],
     );
   }
 
-  /// `Infobae`
+  /// `/organization-filter`
+  String get routeOrganizationFilter {
+    return Intl.message(
+      '/organization-filter',
+      name: 'routeOrganizationFilter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `/public-hearing`
+  String get routePublicHearing {
+    return Intl.message(
+      '/public-hearing',
+      name: 'routePublicHearing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `https://apiplataformaelectoral8.jne.gob.pe/api/v1`
+  String get urlBase {
+    return Intl.message(
+      'https://apiplataformaelectoral8.jne.gob.pe/api/v1',
+      name: 'urlBase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `https://portal.jne.gob.pe/portal/Pagina/Lista_AudienciasPublicas/`
+  String get urlPublicHearing {
+    return Intl.message(
+      'https://portal.jne.gob.pe/portal/Pagina/Lista_AudienciasPublicas/',
+      name: 'urlPublicHearing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `JNE`
   String get txtHome {
     return Intl.message(
-      'Infobae',
+      'JNE',
       name: 'txtHome',
       desc: '',
       args: [],
@@ -140,6 +180,96 @@ class S {
     );
   }
 
+  /// `Default Title`
+  String get txtDefaultTitle {
+    return Intl.message(
+      'Default Title',
+      name: 'txtDefaultTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Default Description`
+  String get txtDefaultDescription {
+    return Intl.message(
+      'Default Description',
+      name: 'txtDefaultDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get txtCancel {
+    return Intl.message(
+      'Cancel',
+      name: 'txtCancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get txtDelete {
+    return Intl.message(
+      'Delete',
+      name: 'txtDelete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Detail`
+  String get txtDetail {
+    return Intl.message(
+      'Detail',
+      name: 'txtDetail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get txtEdit {
+    return Intl.message(
+      'Edit',
+      name: 'txtEdit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New`
+  String get txtNew {
+    return Intl.message(
+      'New',
+      name: 'txtNew',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OK`
+  String get txtOk {
+    return Intl.message(
+      'OK',
+      name: 'txtOk',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get txtSave {
+    return Intl.message(
+      'Save',
+      name: 'txtSave',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sign in`
   String get txtSignIn {
     return Intl.message(
@@ -155,6 +285,16 @@ class S {
     return Intl.message(
       'Filter by :',
       name: 'txtFilterBy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Public Hearing`
+  String get txPublicHearing {
+    return Intl.message(
+      'Public Hearing',
+      name: 'txPublicHearing',
       desc: '',
       args: [],
     );

@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 mixin SubThemeData {
   TextTheme getTextTheme() {
     return GoogleFonts.quicksandTextTheme(const TextTheme(
-      bodyText1: TextStyle(fontWeight: FontWeight.w400),
-      bodyText2: TextStyle(fontWeight: FontWeight.w400),
+      bodyLarge: TextStyle(fontWeight: FontWeight.w400),
+      bodyMedium: TextStyle(fontWeight: FontWeight.w400),
     ));
   }
 

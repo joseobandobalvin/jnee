@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jnee/configs/themes/app_colors.dart';
+import 'package:jnee/generated/l10n.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -26,7 +27,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           title: const Text('Inicio'),
           onTap: () {
-            Get.offAllNamed("/");
+            Get.offAllNamed(S.current.routeHome);
           },
         ),
         ListTile(
@@ -34,9 +35,19 @@ class CustomDrawer extends StatelessWidget {
             Icons.filter_list,
             color: Colors.black,
           ),
-          title: const Text('Lista por Region'),
+          title: const Text('Lista por Región'),
           onTap: () {
-            Get.offAllNamed("/organization-filter");
+            Get.offAllNamed(S.current.routeOrganizationFilter);
+          },
+        ),
+        ListTile(
+          leading: const Icon(
+            Icons.filter_list,
+            color: Colors.black,
+          ),
+          title: Text(S.current.txPublicHearing),
+          onTap: () {
+            Get.offAllNamed(S.current.routePublicHearing);
           },
         ),
       ],
