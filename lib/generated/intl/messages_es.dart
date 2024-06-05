@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Formación académica"),
         "txtAditionalInformation":
             MessageLookupByLibrary.simpleMessage("Información adicional"),
+        "txtApply": MessageLookupByLibrary.simpleMessage("Aplicar"),
         "txtBasicInformation":
             MessageLookupByLibrary.simpleMessage("Información básica"),
         "txtCancel": MessageLookupByLibrary.simpleMessage("Cancelar"),

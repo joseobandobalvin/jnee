@@ -56,40 +56,78 @@ class CardHearing extends StatelessWidget {
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.all(4.0),
-                        //color: kDarkBlue,
                         child: Column(
                           children: [
-                            const SizedBox(height: 10.0),
-                            Text(
-                              maxLines: 2,
-                              hearing.txFecha!,
-                              textAlign: TextAlign.center,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            const SizedBox(height: 4.0),
+                            // Url video audiencia
+                            Row(
+                              children: [
+                                const Expanded(
+                                  flex: 1,
+                                  child: Icon(Icons.smart_display_sharp),
+                                ),
+                                Expanded(
+                                  flex: 4,
+                                  child: Text(
+                                    maxLines: 1,
+                                    hearing.urlVideo!.isNotEmpty
+                                        ? hearing.urlVideo!
+                                        : "No hay registro de video",
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
                             ),
                             const SizedBox(height: 4.0),
-                            Container(
-                              width: 3.0,
-                              height: 3.0,
-                              //color: Colors.amber,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                shape: BoxShape.circle,
-                              ),
+                            // Detalle audiencia por ID
+                            Row(
+                              children: [
+                                const Expanded(
+                                  flex: 1,
+                                  child: Icon(Icons.picture_as_pdf_sharp),
+                                ),
+                                Expanded(
+                                  flex: 4,
+                                  child: Text(
+                                    maxLines: 1,
+                                    hearing.txArchivo.isNotEmpty
+                                        ? hearing.txArchivo!
+                                        : "Sin Detalle",
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
                             ),
                             const SizedBox(height: 4.0),
-                            Text(
-                              hearing.txHora!,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 17.0,
-                                //fontWeight: FontWeight.bold,
-                              ),
+                            // Resultado votacion
+                            Row(
+                              children: [
+                                const Expanded(
+                                  flex: 1,
+                                  child: Icon(Icons.description_sharp),
+                                ),
+                                Expanded(
+                                  flex: 4,
+                                  child: Text(
+                                    maxLines: 1,
+                                    hearing.txHojaVotacion!.isNotEmpty
+                                        ? hearing.txHojaVotacion!
+                                        : "Sin Resultado de Votacion",
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
                             ),
+                            // const SizedBox(height: 4.0),
+                            // Container(
+                            //   width: 3.0,
+                            //   height: 3.0,
+                            //   //color: Colors.amber,
+                            //   decoration: const BoxDecoration(
+                            //     color: Colors.white,
+                            //     shape: BoxShape.circle,
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
@@ -112,19 +150,44 @@ class CardHearing extends StatelessWidget {
                   width: darkCardWidth * 0.8,
                   height: 47,
                   padding: const EdgeInsets.symmetric(horizontal: 17),
-                  child: Center(
-                    child: Text(
-                      hearing.urlVideo!.isNotEmpty
-                          ? hearing.urlVideo!
-                          : "No hay registro",
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 11.0,
-                        //fontWeight: FontWeight.bold,
+                  child: Row(children: [
+                    Expanded(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          const Icon(Icons.calendar_month_outlined),
+                          const SizedBox(
+                            width: 4.0,
+                          ),
+                          Text(
+                            hearing.txFecha!,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
+                    Expanded(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          const Icon(Icons.schedule_outlined),
+                          const SizedBox(
+                            width: 4.0,
+                          ),
+                          Text(
+                            hearing.txHora!,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ]),
                 ),
               ),
             ),

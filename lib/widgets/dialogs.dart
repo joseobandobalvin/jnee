@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:jnee/generated/l10n.dart';
+import 'package:jnee/screens/home/widgets/filters.dart';
 
 abstract class Dialogs {
   static Future<void> alert(BuildContext context,
@@ -163,6 +164,57 @@ abstract class Dialogs {
       ),
     );
 
+    return result ?? false;
+  }
+
+  static Future<bool> confirmFilters(
+    BuildContext context, {
+    String? title,
+    String? description,
+  }) async {
+    final result = await showDialog<bool>(
+      context: context,
+      builder: (_) => AlertDialog(
+        shape: const BeveledRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(2),
+            bottom: Radius.circular(4),
+          ),
+        ),
+        title: title != null ? Text(title) : Text(S.current.txtDefaultTitle),
+        content: const Column(
+          //width: double.infinity,
+          //color: Colors.amber,
+          //child: const Column(
+          children: [
+            Row(
+              children: [
+                Text("Ordenar por:"),
+                OFilters(),
+              ],
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(S.current.txtCancel),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+              textStyle: Theme.of(context).textTheme.labelLarge,
+            ),
+            child: Text(
+              S.current.txtApply,
+              style: const TextStyle(color: Colors.red),
+            ),
+            onPressed: () {
+              Navigator.pop(context, true);
+            },
+          ),
+        ],
+      ),
+    );
     return result ?? false;
   }
 }

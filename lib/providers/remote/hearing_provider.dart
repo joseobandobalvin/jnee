@@ -5,7 +5,7 @@ import 'package:jnee/helpers/http_method.dart';
 class HearingProvider {
   final Http _http = Http();
 
-  Future getList() async {
+  Future getList(int displayStart, int displayLength, String sortDir) async {
     try {
       final response = await _http.request(
         S.current.urlPublicHearing,
@@ -21,9 +21,9 @@ class HearingProvider {
           "mDataProp_4": "txHojaVotacion",
           "mDataProp_5": "urlVideo",
           "iColumns": "6",
-          "iDisplayStart": "0",
-          "iDisplayLength": "10",
-          "sSortDir_0": "desc",
+          "iDisplayStart": displayStart.toString(),
+          "iDisplayLength": displayLength.toString(),
+          "sSortDir_0": sortDir,
           "sEcho": "1"
         },
       );

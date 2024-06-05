@@ -180,6 +180,16 @@ class S {
     );
   }
 
+  /// `Apply`
+  String get txtApply {
+    return Intl.message(
+      'Apply',
+      name: 'txtApply',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Default Title`
   String get txtDefaultTitle {
     return Intl.message(

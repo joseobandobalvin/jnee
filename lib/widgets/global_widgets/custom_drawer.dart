@@ -42,7 +42,7 @@ class CustomDrawer extends StatelessWidget {
         ),
         ListTile(
           leading: const Icon(
-            Icons.filter_list,
+            Icons.gavel_outlined,
             color: Colors.black,
           ),
           title: Text(S.current.txPublicHearing),

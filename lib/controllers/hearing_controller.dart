@@ -28,10 +28,14 @@ class HearingController extends GetxController {
   //   return organizations;
   // }
 
-  Future<List<Hearing>> getList(BuildContext c) async {
+  Future<List<Hearing>> getList(BuildContext c,
+      {int displayStart = 0,
+      int displayLength = 10,
+      String sortDir = "desc"}) async {
     List<Hearing> hearings = [];
     try {
-      final res = await _hearingProvider.getList();
+      final res =
+          await _hearingProvider.getList(displayStart, displayLength, sortDir);
 
       if (res != null && res['sEcho'] == "1") {
         final lista = List.from(res['aaData']);
@@ -50,6 +54,7 @@ class HearingController extends GetxController {
     } catch (e) {
       print("error sin manejadores en flutter HearingController getList ----");
       // ignore: use_build_context_synchronously
+      Get.snackbar("title", "message");
       SnackBars.show(c, error: e);
       print(e);
     }
