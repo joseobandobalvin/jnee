@@ -290,10 +290,10 @@ class S {
     );
   }
 
-  /// `Filter by :`
+  /// `Search filters :`
   String get txtFilterBy {
     return Intl.message(
-      'Filter by :',
+      'Search filters :',
       name: 'txtFilterBy',
       desc: '',
       args: [],

@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "package:flutter/widgets.dart";
 
 class OFilters extends StatefulWidget {
   const OFilters({super.key});
@@ -27,7 +26,6 @@ class _OFiltersState extends State<OFilters> {
         // This is called when the user selects an item.
         setState(() {
           dropdownValue = value!;
-
           print(dropdownValue);
         });
       },

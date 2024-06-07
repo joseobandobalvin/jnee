@@ -1,8 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:jnee/generated/l10n.dart';
-import 'package:jnee/screens/home/widgets/filters.dart';
+
+final RxInt displayLength = 10.obs;
+final RxInt tmpDisplayLength = 0.obs;
+
+final RxString sortDirection = "desc".obs;
+final RxString tmpSortDirection = "".obs;
 
 abstract class Dialogs {
   static Future<void> alert(BuildContext context,
@@ -167,11 +173,14 @@ abstract class Dialogs {
     return result ?? false;
   }
 
-  static Future<bool> confirmFilters(
+  static Future<Map<String, dynamic>> dropDownFilters(
     BuildContext context, {
     String? title,
     String? description,
+    String? sorDirection,
+    int? disLength,
   }) async {
+    print("Dialogs dropDownFilters ====> " + sorDirection!);
     final result = await showDialog<bool>(
       context: context,
       builder: (_) => AlertDialog(
@@ -182,15 +191,18 @@ abstract class Dialogs {
           ),
         ),
         title: title != null ? Text(title) : Text(S.current.txtDefaultTitle),
-        content: const Column(
-          //width: double.infinity,
-          //color: Colors.amber,
-          //child: const Column(
+        content: Column(
           children: [
             Row(
               children: [
-                Text("Ordenar por:"),
-                OFilters(),
+                const Text("Ordenar por:"),
+                showFiltersByYear(sorDirection),
+              ],
+            ),
+            Row(
+              children: [
+                const Text("# por página"),
+                showFiltersByLength(disLength!),
               ],
             ),
           ],
@@ -215,7 +227,73 @@ abstract class Dialogs {
         ],
       ),
     );
-    return result ?? false;
+    bool b = result ?? false;
+    if (b) {
+      return {
+        "boolean": b,
+        "sortDirection": sortDirection.value,
+        "displayLength": displayLength.value
+      };
+    } else {
+      return {
+        "boolean": b,
+        "sortDirection": tmpSortDirection.value,
+        "displayLength": tmpDisplayLength.value
+      };
+    }
+  }
+
+  static Widget showFiltersByYear(String sd) {
+    const List<Map<String, String>> list = [
+      {"label": "Nuevos", "value": "desc"},
+      {"label": "Antiguos", "value": "asc"}
+    ];
+    tmpSortDirection.value = sd;
+    sortDirection.value = sd;
+    var iniSelection = list.where((element) => element['value'] == sd).first;
+    print("showFiltersByYear ====> " + sd);
+    return DropdownMenu<Map<String, String>>(
+      inputDecorationTheme: InputDecorationTheme(
+        focusedBorder: InputBorder.none,
+        isCollapsed: true,
+        isDense: true,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+        constraints: BoxConstraints.tight(const Size.fromHeight(30)),
+      ),
+      initialSelection: iniSelection,
+      onSelected: (Map<String, String>? value) {
+        sortDirection.value = value!["value"]!;
+      },
+      dropdownMenuEntries: list.map<DropdownMenuEntry<Map<String, String>>>(
+          (Map<String, String> value) {
+        return DropdownMenuEntry<Map<String, String>>(
+            value: value, label: value["label"]!);
+      }).toList(),
+    );
+  }
+
+  static Widget showFiltersByLength(int dl) {
+    tmpDisplayLength.value = dl;
+    displayLength.value = dl;
+    const list = <int>[10, 20, 30];
+    var iniSelection = list.where((element) => element == dl).first;
+
+    return DropdownMenu<int>(
+      inputDecorationTheme: InputDecorationTheme(
+        focusedBorder: InputBorder.none,
+        isCollapsed: true,
+        isDense: true,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+        constraints: BoxConstraints.tight(const Size.fromHeight(30)),
+      ),
+      initialSelection: iniSelection,
+      onSelected: (int? value) {
+        displayLength.value = value!;
+      },
+      dropdownMenuEntries: list.map<DropdownMenuEntry<int>>((int value) {
+        return DropdownMenuEntry<int>(value: value, label: value.toString());
+      }).toList(),
+    );
   }
 }
 
@@ -241,6 +319,20 @@ abstract class ProgressDialog {
       ),
     );
   }
+
+  static Widget loadingCircularSliverToBoxAdapter({Color? color}) {
+    Color c = Colors.white;
+    return SliverToBoxAdapter(
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: CircularProgressIndicator(
+            color: color ?? c,
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class SnackBars {
@@ -257,3 +349,25 @@ class SnackBars {
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
+
+// class OOFilters {
+//   static Widget show() {
+//     const List<String> list = <String>['Nuevos', 'Antiguos'];
+//     return DropdownMenu<String>(
+//       inputDecorationTheme: InputDecorationTheme(
+//         focusedBorder: InputBorder.none,
+//         isCollapsed: true,
+//         isDense: true,
+//         contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+//         constraints: BoxConstraints.tight(const Size.fromHeight(30)),
+//       ),
+//       initialSelection: list.first,
+//       onSelected: (String? value) {
+//         print(value);
+//       },
+//       dropdownMenuEntries: list.map<DropdownMenuEntry<String>>((String value) {
+//         return DropdownMenuEntry<String>(value: value, label: value);
+//       }).toList(),
+//     );
+//   }
+// }

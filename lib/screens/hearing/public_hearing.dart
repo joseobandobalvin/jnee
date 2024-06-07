@@ -18,21 +18,21 @@ class PublicHearingScreen extends StatefulWidget {
 }
 
 class _PublicHearingScreenState extends State<PublicHearingScreen> {
-  late Future<List<Hearing>> ph;
-  final HearingController _hearingController = HearingController();
+  //late Future<List<Hearing>> ph;
+  final HearingController hearingController = HearingController();
 
   late List<Hearing> _posts;
 
   final disStar = 0.obs;
-  final disLen = 8.obs;
-  final sorDi = "asc".obs;
+  final disLen = 10.obs;
+  final sorDi = "desc".obs;
   RxBool isLoading = false.obs;
-  RxBool _error = false.obs;
+  RxBool error = false.obs;
 
   final reachedEnd = false.obs;
 
   void onScrollListener() {
-    print("onScrollListener " + reachedEnd.value.toString());
+    //print("onScrollListener " + reachedEnd.value.toString());
     if (reachedEnd.value) {
       return;
     }
@@ -40,8 +40,8 @@ class _PublicHearingScreenState extends State<PublicHearingScreen> {
       isLoading.value = true;
 
       Future.microtask(() async {
-        print("disStar =====> $disStar");
-        final newHearings = await _hearingController.getList(
+        //print("disStar =====> $disStar");
+        final newHearings = await hearingController.getList(
           context,
           displayStart: disStar.value,
           displayLength: disLen.value,
@@ -53,22 +53,16 @@ class _PublicHearingScreenState extends State<PublicHearingScreen> {
           reachedEnd.value = true;
           if (newHearings.isEmpty) {
             isLoading.value = false;
-            _error.value = true;
+            error.value = true;
           }
         } else {
           disStar.value = disStar.value + disLen.value;
         }
 
-        // } else {
-        //   nextPage.value++;
-        // }
-
-        //allFlowers.value.add(newHearings);
         isLoading.value = false;
         setState(() {
           _posts.addAll(newHearings);
         });
-        //isLoading.value = false;
       });
     }
   }
@@ -115,15 +109,26 @@ class _PublicHearingScreenState extends State<PublicHearingScreen> {
               actions: <Widget>[
                 IconButton(
                   onPressed: () async {
-                    var t = await Dialogs.confirmFilters(context,
-                        title: S.current.txtFilterBy);
-                    print("Confirmandroid =====> " + t.toString());
-                    reachedEnd.value = false;
-                    disStar.value = 0;
-                    _posts.clear();
-                    print("_posts");
-                    print(_posts);
-                    onScrollListener();
+                    var res = await Dialogs.dropDownFilters(
+                      context,
+                      title: S.current.txtFilterBy,
+                      sorDirection: sorDi.value,
+                      disLength: disLen.value,
+                    );
+
+                    print(res);
+
+                    if (res["boolean"]) {
+                      print(res);
+                      reachedEnd.value = false;
+                      disStar.value = 0;
+                      sorDi.value = res["sortDirection"];
+                      disLen.value = res["displayLength"];
+                      _posts.clear();
+                      setState(() {
+                        onScrollListener();
+                      });
+                    }
                   },
                   icon: const Icon(Icons.more_vert, color: Colors.white),
                 ),
@@ -142,35 +147,6 @@ class _PublicHearingScreenState extends State<PublicHearingScreen> {
               // ),
             ),
             buildPostsView(context),
-            // FutureBuilder(
-            //   future: ph,
-            //   builder: (context, snapshot) {
-            //     var childCount = 0;
-
-            //     if (snapshot.connectionState == ConnectionState.done &&
-            //         snapshot.data!.isNotEmpty) {
-            //       childCount = snapshot.data!.length;
-
-            //       return SliverList(
-            //         delegate: SliverChildBuilderDelegate(
-            //           (BuildContext context, int index) {
-            //             return CardHearing(snapshot.data![index]);
-            //           },
-            //           childCount: childCount,
-            //         ),
-            //       );
-            //     }
-            //     return const SliverToBoxAdapter(
-            //       child: Center(
-            //         child: LinearProgressIndicator(
-            //           backgroundColor: Colors.white,
-            //           color: Colors.black45,
-            //           minHeight: 2,
-            //         ),
-            //       ),
-            //     );
-            //   },
-            // ),
           ],
         ),
       ),
@@ -180,17 +156,9 @@ class _PublicHearingScreenState extends State<PublicHearingScreen> {
   Widget buildPostsView(BuildContext c) {
     if (_posts.isEmpty) {
       if (isLoading.value == true) {
-        return const SliverToBoxAdapter(
-          child: Center(
-            child: Padding(
-              padding: EdgeInsets.all(8),
-              child: CircularProgressIndicator(
-                color: Colors.white,
-              ),
-            ),
-          ),
-        );
-      } else if (_error.value) {
+        return ProgressDialog.loadingCircularSliverToBoxAdapter(
+            color: Colors.indigo);
+      } else if (error.value) {
         return SliverToBoxAdapter(
           child: Center(
             child: errorDialog(
@@ -209,22 +177,15 @@ class _PublicHearingScreenState extends State<PublicHearingScreen> {
           print("$index ===== " + _posts.length.toString());
 
           if (index == _posts.length) {
-            if (_error.value) {
+            if (error.value) {
               return SliverToBoxAdapter(
                 child: Center(
                   child: errorDialog(size: 15),
                 ),
               );
             } else {
-              return const SliverToBoxAdapter(
-                child: Center(
-                  child: Padding(
-                    padding: EdgeInsets.all(8),
-                    child: CircularProgressIndicator(
-                      color: Colors.red,
-                    ),
-                  ),
-                ),
+              return ProgressDialog.loadingCircularSliverToBoxAdapter(
+                color: Colors.green,
               );
             }
           }
@@ -250,7 +211,7 @@ class _PublicHearingScreenState extends State<PublicHearingScreen> {
             onPressed: () {
               reachedEnd.value = false;
               isLoading.value = false;
-              _error.value = false;
+              error.value = false;
               setState(() {
                 onScrollListener();
               });

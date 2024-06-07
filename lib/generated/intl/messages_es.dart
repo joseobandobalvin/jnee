@@ -62,7 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "txtDelete": MessageLookupByLibrary.simpleMessage("Eliminar"),
         "txtDetail": MessageLookupByLibrary.simpleMessage("Detalle"),
         "txtEdit": MessageLookupByLibrary.simpleMessage("Editar"),
-        "txtFilterBy": MessageLookupByLibrary.simpleMessage("Filtrar por :"),
+        "txtFilterBy":
+            MessageLookupByLibrary.simpleMessage("Filtros de busqueda :"),
         "txtHome": MessageLookupByLibrary.simpleMessage("JNE"),
         "txtListOfJudgments":
             MessageLookupByLibrary.simpleMessage("Relacion de sentencias"),

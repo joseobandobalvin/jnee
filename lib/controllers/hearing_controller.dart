@@ -10,23 +10,19 @@ import 'package:jnee/widgets/dialogs.dart';
 
 class HearingController extends GetxController {
   final HearingProvider _hearingProvider = HearingProvider();
-  // final OrganizationProvider _orgProvider = OrganizationProvider();
+  RxString sortDir = "asc".obs;
+  RxInt disLen = 10.obs;
 
-  // Future<List<Organization>> getListByDepartmentAndOrganization() async {
-  //   final res = await _orgProvider.getListByDepartmentAndOrganization();
-  //   List<Organization> organizations = [];
+  String get sortDirection => sortDir.value;
+  int get dispalyLength => disLen.value;
 
-  //   if (res != null) {
-  //     final lista = List.from(res['data']);
-  //     for (var e in lista) {
-  //       final Organization user = Organization.fromJson(e);
-  //       organizations.add(user);
-  //     }
-  //     return organizations;
-  //   }
+  set sortDirection(String dir) {
+    sortDir.value = dir;
+  }
 
-  //   return organizations;
-  // }
+  set dispalyLength(int len) {
+    disLen.value = len;
+  }
 
   Future<List<Hearing>> getList(BuildContext c,
       {int displayStart = 0,
