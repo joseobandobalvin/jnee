@@ -70,17 +70,8 @@ class _PublicHearingScreenState extends State<PublicHearingScreen> {
   @override
   void initState() {
     super.initState();
-
     _posts = [];
-
     onScrollListener();
-
-    // ph = _hearingController.getList(
-    //   context,
-    //   displayStart: disStar.value,
-    //   displayLength: disLen.value,
-    //   sortDir: sorDi.value,
-    // );
   }
 
   @override
@@ -92,12 +83,10 @@ class _PublicHearingScreenState extends State<PublicHearingScreen> {
       ),
       body: NotificationListener<ScrollNotification>(
         onNotification: (scrollNotification) {
-          // if (scrollNotification is ScrollEndNotification) {
-          //   onScrollListener();
-          // }
           if (scrollNotification.metrics.pixels ==
               scrollNotification.metrics.maxScrollExtent) {
             onScrollListener();
+            //Dialogs.alert(context);
           }
 
           return true;
@@ -116,10 +105,7 @@ class _PublicHearingScreenState extends State<PublicHearingScreen> {
                       disLength: disLen.value,
                     );
 
-                    print(res);
-
                     if (res["boolean"]) {
-                      print(res);
                       reachedEnd.value = false;
                       disStar.value = 0;
                       sorDi.value = res["sortDirection"];

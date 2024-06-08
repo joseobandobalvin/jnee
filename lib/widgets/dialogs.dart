@@ -180,7 +180,6 @@ abstract class Dialogs {
     String? sorDirection,
     int? disLength,
   }) async {
-    print("Dialogs dropDownFilters ====> " + sorDirection!);
     final result = await showDialog<bool>(
       context: context,
       builder: (_) => AlertDialog(
@@ -196,7 +195,7 @@ abstract class Dialogs {
             Row(
               children: [
                 const Text("Ordenar por:"),
-                showFiltersByYear(sorDirection),
+                showFiltersByYear(sorDirection!),
               ],
             ),
             Row(
@@ -251,7 +250,7 @@ abstract class Dialogs {
     tmpSortDirection.value = sd;
     sortDirection.value = sd;
     var iniSelection = list.where((element) => element['value'] == sd).first;
-    print("showFiltersByYear ====> " + sd);
+
     return DropdownMenu<Map<String, String>>(
       inputDecorationTheme: InputDecorationTheme(
         focusedBorder: InputBorder.none,
