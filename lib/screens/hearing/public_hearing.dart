@@ -160,8 +160,6 @@ class _PublicHearingScreenState extends State<PublicHearingScreen> {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
-          print("$index ===== " + _posts.length.toString());
-
           if (index == _posts.length) {
             if (error.value) {
               return SliverToBoxAdapter(

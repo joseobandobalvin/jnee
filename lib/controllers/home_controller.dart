@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart';
@@ -15,13 +16,12 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
-  Future<List<Cv>> getCandidates() async {
+  Future<List<Cv>> getCandidates(BuildContext context) async {
     List<Cv> usuarios = [];
 
     try {
-      final res = await _userProvider
-          .getAllCandidates()
-          .timeout(const Duration(seconds: 2));
+      final res = await _userProvider.getAllCandidates();
+      //.timeout(const Duration(milliseconds: 2));
 
       if (res != null && res["count"] > 0.0) {
         final lista = List.from(res['data']);
@@ -37,6 +37,9 @@ class HomeController extends GetxController {
     } catch (e) {
       print("error sin manejadores en flutter getCandidates ----");
       print(e);
+
+      Loader.snackBarFlutter(context, message: e.toString());
+      //Loader.errorSnackBar(title: "Errorrrrr", message: e.toString());
     }
 
     return usuarios;

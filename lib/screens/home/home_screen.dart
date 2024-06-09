@@ -8,6 +8,7 @@ import 'package:jnee/models/cv.dart';
 import 'package:jnee/screens/home/search_form.dart';
 import 'package:jnee/widgets/card_stack.dart';
 import 'package:jnee/widgets/global_widgets/custom_drawer.dart';
+import 'package:rive/rive.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -25,13 +26,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    cv = _homeController.getCandidates();
+    cv = _homeController.getCandidates(context);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kLightBlue,
+      backgroundColor: Colors.black12,
       drawer: const Drawer(
         child: CustomDrawer(),
       ),
@@ -69,19 +70,31 @@ class _HomeScreenState extends State<HomeScreen> {
             builder: (context, snapshot) {
               var childCount = 0;
 
-              if (snapshot.connectionState == ConnectionState.done &&
-                  snapshot.data!.isNotEmpty) {
-                //print(snapshot);
-                childCount = snapshot.data!.length;
-                //print("childCount tiene $childCount datos");
-                return SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return CardStack(snapshot.data![index]);
-                    },
-                    childCount: childCount,
-                  ),
-                );
+              if (snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.data!.isNotEmpty) {
+                  childCount = snapshot.data!.length;
+
+                  return SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        return CardStack(snapshot.data![index]);
+                      },
+                      childCount: childCount,
+                    ),
+                  );
+                } else {
+                  return const SliverToBoxAdapter(
+                    child: Center(
+                      child: SizedBox(
+                        height: 500,
+                        child: RiveAnimation.asset(
+                          'assets/rive/flame.riv',
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  );
+                }
               }
               return const SliverToBoxAdapter(
                 child: Center(

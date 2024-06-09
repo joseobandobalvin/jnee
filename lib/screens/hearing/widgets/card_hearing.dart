@@ -149,8 +149,8 @@ class CardHearing extends StatelessWidget {
                                   child: Text(
                                     maxLines: 1,
                                     hearing.txHojaVotacion!.isNotEmpty
-                                        ? "https://portal.jne.gob.pe${hearing.txHojaVotacion!}"
-                                        : "Sin Resultado de Votacion",
+                                        ? "Ver resultados"
+                                        : "Sin Resultado de Votación",
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),

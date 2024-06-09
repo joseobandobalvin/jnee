@@ -29,27 +29,18 @@ class CustomSearchDelegate extends SearchDelegate {
         icon: const Icon(Icons.clear),
       ),
       IconButton(
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              title: Text(S.current.txtFilterBy),
-              content: Container(
-                  width: double.infinity,
-                  color: Colors.amber,
-                  child: Column(
-                    children: [
-                      Text(S.current.txtSignIn),
-                      OFilters(),
-                    ],
-                  )),
-              actions: [
-                okButton,
-              ],
-            ),
+        onPressed: () async {
+          var t = await HomeFilters.dropDownFilters(
+            context,
+            title: S.current.txtFilterBy,
+            sorDirection: "asc",
+            disLength: 20,
           );
         },
-        icon: const Icon(Icons.more_vert),
+        icon: const Icon(
+          Icons.more_vert,
+          color: Colors.blue,
+        ),
       ),
     ];
   }

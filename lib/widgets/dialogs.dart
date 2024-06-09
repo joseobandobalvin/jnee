@@ -189,18 +189,45 @@ abstract class Dialogs {
             bottom: Radius.circular(4),
           ),
         ),
-        title: title != null ? Text(title) : Text(S.current.txtDefaultTitle),
+        title: title != null
+            ? Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.bold,
+                ),
+              )
+            : Text(
+                S.current.txtDefaultTitle,
+                style: const TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
         content: Column(
           children: [
             Row(
               children: [
-                const Text("Ordenar por:"),
+                const SizedBox(
+                  width: 84,
+                  child: Text("Ordenar por"),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
                 showFiltersByYear(sorDirection!),
               ],
             ),
+            const SizedBox(height: 10),
             Row(
               children: [
-                const Text("# por página"),
+                const SizedBox(
+                  width: 84,
+                  child: Text("Registros por página"),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
                 showFiltersByLength(disLength!),
               ],
             ),
@@ -252,11 +279,16 @@ abstract class Dialogs {
     var iniSelection = list.where((element) => element['value'] == sd).first;
 
     return DropdownMenu<Map<String, String>>(
+      width: 130.0,
+      textStyle: const TextStyle(
+        fontWeight: FontWeight.bold,
+        overflow: TextOverflow.ellipsis,
+      ),
       inputDecorationTheme: InputDecorationTheme(
         focusedBorder: InputBorder.none,
         isCollapsed: true,
         isDense: true,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 4),
         constraints: BoxConstraints.tight(const Size.fromHeight(30)),
       ),
       initialSelection: iniSelection,
@@ -266,7 +298,19 @@ abstract class Dialogs {
       dropdownMenuEntries: list.map<DropdownMenuEntry<Map<String, String>>>(
           (Map<String, String> value) {
         return DropdownMenuEntry<Map<String, String>>(
-            value: value, label: value["label"]!);
+          value: value,
+          label: value["label"]!,
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.black,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 8.0,
+            ),
+            visualDensity: const VisualDensity(
+              horizontal: 0,
+              vertical: -2,
+            ),
+          ),
+        );
       }).toList(),
     );
   }
@@ -274,15 +318,20 @@ abstract class Dialogs {
   static Widget showFiltersByLength(int dl) {
     tmpDisplayLength.value = dl;
     displayLength.value = dl;
-    const list = <int>[10, 20, 30];
+    const list = <int>[10, 20, 30, 40, 50];
     var iniSelection = list.where((element) => element == dl).first;
 
     return DropdownMenu<int>(
+      width: 130.0,
+      textStyle: const TextStyle(
+        fontWeight: FontWeight.bold,
+        overflow: TextOverflow.ellipsis,
+      ),
       inputDecorationTheme: InputDecorationTheme(
         focusedBorder: InputBorder.none,
         isCollapsed: true,
         isDense: true,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 4),
         constraints: BoxConstraints.tight(const Size.fromHeight(30)),
       ),
       initialSelection: iniSelection,
@@ -290,7 +339,20 @@ abstract class Dialogs {
         displayLength.value = value!;
       },
       dropdownMenuEntries: list.map<DropdownMenuEntry<int>>((int value) {
-        return DropdownMenuEntry<int>(value: value, label: value.toString());
+        return DropdownMenuEntry<int>(
+          value: value,
+          label: value.toString(),
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.black,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 8.0,
+            ),
+            visualDensity: const VisualDensity(
+              horizontal: 0,
+              vertical: -2,
+            ),
+          ),
+        );
       }).toList(),
     );
   }
