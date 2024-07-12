@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black12,
+      backgroundColor: kLightBlue,
       drawer: const Drawer(
         child: CustomDrawer(),
       ),
@@ -88,7 +88,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: SizedBox(
                         height: 500,
                         child: RiveAnimation.asset(
-                          'assets/rive/flame.riv',
+                          'assets/rive/black-cat-nobg.riv',
+                          stateMachines: ["State Machine 1"],
                           fit: BoxFit.contain,
                         ),
                       ),
