@@ -13,20 +13,23 @@ class SearchResultList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var idOrgPol = usuario.idOrganizacionPolitica.toInt();
+    var idOrgPol = usuario.idOrganizacionPolitica!.toInt();
     return ListTile(
       leading: CachedNetworkImage(
         width: 47,
         height: 47,
         imageUrl: "${S.current.urlPoliticalGroupSymbol}/$idOrgPol",
         progressIndicatorBuilder: (context, url, downloadProgress) =>
-            LinearProgressIndicator(value: downloadProgress.progress, color: kDarkBlue,),
+            LinearProgressIndicator(
+          value: downloadProgress.progress,
+          color: kDarkBlue,
+        ),
         errorWidget: (context, url, error) => const Icon(Icons.error),
       ),
       title: Text(
         //textAlign: TextAlign.justify,
         maxLines: 2,
-        usuario.nombreCompleto,
+        usuario.nombreCompleto!,
         style: const TextStyle(
           fontSize: 11,
           fontWeight: FontWeight.bold,
@@ -34,7 +37,7 @@ class SearchResultList extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
       ),
       subtitle: Text(
-        usuario.organizacionPolitica,
+        usuario.organizacionPolitica!,
         style: const TextStyle(
           fontSize: 10,
         ),

@@ -2,6 +2,7 @@ import 'package:jnee/controllers/auth_controller.dart';
 import 'package:jnee/controllers/hearing_controller.dart';
 import 'package:jnee/controllers/home_controller.dart';
 import 'package:jnee/controllers/organization_controller.dart';
+import 'package:jnee/controllers/parliament_controller.dart';
 import 'package:jnee/controllers/search_controller.dart';
 import 'package:jnee/controllers/splash_controller.dart';
 
@@ -12,6 +13,7 @@ import 'package:jnee/screens/home/search_form.dart';
 import 'package:jnee/screens/login/login_screen.dart';
 import 'package:get/get.dart';
 import 'package:jnee/screens/organization/organization_filter_screen.dart';
+import 'package:jnee/screens/parliament/andean_parliament.dart';
 import 'package:jnee/screens/splash/splash_screen.dart';
 
 class AppRoutes {
@@ -22,6 +24,7 @@ class AppRoutes {
   static const String cardDetailPage = "/card-detail";
   static const String organizationFilterPage = "/organization-filter";
   static const String publicHearingPage = "/public-hearing";
+  static const String andeanParliamentPage = "/andean-parliament";
 
   static const String searchPage = "/search";
 
@@ -69,6 +72,13 @@ class AppRoutes {
           page: () => const PublicHearingScreen(),
           binding: BindingsBuilder(() {
             Get.put(HearingController());
+          }),
+        ),
+        GetPage(
+          name: andeanParliamentPage,
+          page: () => const AndeanParliamentScreen(),
+          binding: BindingsBuilder(() {
+            Get.put(ParliamentController());
           }),
         ),
         // GetPage(

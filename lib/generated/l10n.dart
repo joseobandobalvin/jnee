@@ -80,6 +80,16 @@ class S {
     );
   }
 
+  /// `/andean-parliament`
+  String get routeParliament {
+    return Intl.message(
+      '/andean-parliament',
+      name: 'routeParliament',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `https://apiplataformaelectoral8.jne.gob.pe/api/v1`
   String get urlBase {
     return Intl.message(
@@ -95,6 +105,16 @@ class S {
     return Intl.message(
       'https://portal.jne.gob.pe/portal/Pagina/Lista_AudienciasPublicas/',
       name: 'urlPublicHearing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `https://cej.jne.gob.pe/Autoridades/ListarConformacionActual`
+  String get urlAndeanParliament {
+    return Intl.message(
+      'https://cej.jne.gob.pe/Autoridades/ListarConformacionActual',
+      name: 'urlAndeanParliament',
       desc: '',
       args: [],
     );
@@ -305,6 +325,16 @@ class S {
     return Intl.message(
       'Public Hearing',
       name: 'txPublicHearing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Andean Parliament`
+  String get txAndeanParliament {
+    return Intl.message(
+      'Andean Parliament',
+      name: 'txAndeanParliament',
       desc: '',
       args: [],
     );

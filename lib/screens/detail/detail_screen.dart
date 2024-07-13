@@ -30,14 +30,14 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   void initState() {
-    res = _homeController.getUserInformation(cv.idHojaVida.toInt());
+    res = _homeController.getUserInformation(cv.idHojaVida!.toInt());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    var idHojaVida = cv.idHojaVida.toInt();
-    var idOrgPol = cv.idOrganizacionPolitica.toInt();
+    var idHojaVida = cv.idHojaVida!.toInt();
+    var idOrgPol = cv.idOrganizacionPolitica!.toInt();
 
     return Scaffold(
       // appBar: AppBar(
@@ -48,7 +48,7 @@ class _DetailScreenState extends State<DetailScreen> {
         slivers: [
           SliverAppBar(
             backgroundColor: kDarkBlue,
-            title: Text(cv.nombreCompleto),
+            title: Text(cv.nombreCompleto!),
             expandedHeight: 60.0,
             elevation: 10.0,
             pinned: true,
@@ -63,7 +63,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   width: double.maxFinite,
                   child: Text(
                     textAlign: TextAlign.center,
-                    cv.organizacionPolitica,
+                    cv.organizacionPolitica!,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                     ),

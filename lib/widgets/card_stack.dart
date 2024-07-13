@@ -13,7 +13,7 @@ class CardStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var darkCardWidth = MediaQuery.of(context).size.width - 2 * 8;
-    var idHojaVida = usuario.idHojaVida.toInt();
+    var idHojaVida = usuario.idHojaVida!.toInt();
     return GestureDetector(
       onTap: () => Get.to(() => const DetailScreen(), arguments: usuario),
       child: Center(
@@ -68,7 +68,7 @@ class CardStack extends StatelessWidget {
                           children: [
                             Text(
                               maxLines: 2,
-                              usuario.nombreCompleto,
+                              usuario.nombreCompleto!,
                               textAlign: TextAlign.center,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
@@ -119,7 +119,7 @@ class CardStack extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 17),
                   child: Center(
                     child: Text(
-                      usuario.organizacionPolitica,
+                      usuario.organizacionPolitica!,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         color: Colors.white,

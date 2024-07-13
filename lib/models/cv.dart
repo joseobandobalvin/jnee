@@ -1,26 +1,26 @@
 class Cv {
-  final String estado,
+  final String? estado,
       nombreCompleto,
       numeroDocumento,
       organizacionPolitica,
       rutaArchivo;
   final String? postulaDepartamento, postulaDistrito, postulaProvincia;
-  final int rowNumber;
-  final double idOrganizacionPolitica, numeroCandidato, idHojaVida;
+  final int? rowNumber;
+  final double? idOrganizacionPolitica, numeroCandidato, idHojaVida;
 
   Cv({
-    required this.estado,
-    required this.nombreCompleto,
-    required this.organizacionPolitica,
+    this.estado,
+    this.nombreCompleto,
+    this.organizacionPolitica,
     this.postulaDepartamento,
     this.postulaDistrito,
     this.postulaProvincia,
-    required this.rutaArchivo,
-    required this.idHojaVida,
-    required this.idOrganizacionPolitica,
-    required this.numeroCandidato,
-    required this.numeroDocumento,
-    required this.rowNumber,
+    this.rutaArchivo,
+    this.idHojaVida,
+    this.idOrganizacionPolitica,
+    this.numeroCandidato,
+    this.numeroDocumento,
+    this.rowNumber,
   });
 
   factory Cv.fromJson(Map<String, dynamic> json) {

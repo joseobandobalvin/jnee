@@ -43,8 +43,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "routeHome": MessageLookupByLibrary.simpleMessage("/"),
         "routeOrganizationFilter":
             MessageLookupByLibrary.simpleMessage("/organization-filter"),
+        "routeParliament":
+            MessageLookupByLibrary.simpleMessage("/andean-parliament"),
         "routePublicHearing":
             MessageLookupByLibrary.simpleMessage("/public-hearing"),
+        "txAndeanParliament":
+            MessageLookupByLibrary.simpleMessage("Parlamento Andino"),
         "txPublicHearing":
             MessageLookupByLibrary.simpleMessage("Audiencias Públicas"),
         "txtAcademicFormation":
@@ -77,6 +81,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Declaración jurada"),
         "txtWorkExperience":
             MessageLookupByLibrary.simpleMessage("Experiencia laboral"),
+        "urlAndeanParliament": MessageLookupByLibrary.simpleMessage(
+            "https://cej.jne.gob.pe/Autoridades/ListarConformacionActual"),
         "urlBase": MessageLookupByLibrary.simpleMessage(
             "https://apiplataformaelectoral8.jne.gob.pe/api/v1"),
         "urlPhotoResume": MessageLookupByLibrary.simpleMessage(

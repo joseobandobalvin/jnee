@@ -148,14 +148,14 @@ class _DetailScreenExState extends State<DetailScreenEx> {
 
   @override
   void initState() {
-    res = _homeController.getUserInformation(cv.idHojaVida.toInt());
+    res = _homeController.getUserInformation(cv.idHojaVida!.toInt());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    var idHojaVida = cv.idHojaVida.toInt();
-    var idOrgPol = cv.idOrganizacionPolitica.toInt();
+    var idHojaVida = cv.idHojaVida!.toInt();
+    var idOrgPol = cv.idOrganizacionPolitica!.toInt();
     final List<String> tabs = <String>[
       S.current.txtBasicInformation,
       S.current.txtWorkExperience,
@@ -200,7 +200,7 @@ class _DetailScreenExState extends State<DetailScreenEx> {
                                       "${S.current.urlPhotoResume}/$idHojaVida.jpg",
                                   progressIndicatorBuilder:
                                       (context, url, downloadProgress) =>
-                                          OShimmerEffect(
+                                          const OShimmerEffect(
                                     width: 10,
                                     height: double.maxFinite,
                                   ),
@@ -238,7 +238,7 @@ class _DetailScreenExState extends State<DetailScreenEx> {
                   ),
                   backgroundColor: kDarkBlue,
                   title: Text(
-                    cv.nombreCompleto,
+                    cv.nombreCompleto!,
                     style: const TextStyle(color: Colors.white),
                   ),
                   pinned: true,

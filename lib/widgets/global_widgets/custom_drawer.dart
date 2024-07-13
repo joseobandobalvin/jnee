@@ -42,6 +42,16 @@ class CustomDrawer extends StatelessWidget {
         ),
         ListTile(
           leading: const Icon(
+            Icons.donut_small,
+            color: Colors.black,
+          ),
+          title: Text(S.current.txAndeanParliament),
+          onTap: () {
+            Get.offAllNamed(S.current.routeParliament);
+          },
+        ),
+        ListTile(
+          leading: const Icon(
             Icons.gavel_outlined,
             color: Colors.black,
           ),
